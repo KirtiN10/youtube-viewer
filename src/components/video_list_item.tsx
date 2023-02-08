@@ -1,6 +1,12 @@
 import React from "react";
+import { VideoProps } from "../store/videos/types";
+interface Props{
+  onVideoSelect:(video:VideoProps)=>{},
+  key?:string,
+  video:VideoProps
+}
 
-const VideoListItem = ({ video, onVideoSelect }: any) => {
+const VideoListItem = ({ video, onVideoSelect }: Props) => {
   const imageUrl = video.snippet.thumbnails.default.url;
 
   return (

@@ -1,12 +1,15 @@
 import React, { useState } from "react";
+interface Props{
+  onSearchTermChange:(param:string)=>{}
+}
 
-function SearchBar(props: any) {
+function SearchBar(props:Props) {
   const [term, setTerm] = useState("");
    /**
    * Function that is being called every time the input has been changed
    * @param {*} term
    */
-  const onInputChange = (term: any) => {
+  const onInputChange = (term: string) => {
     setTerm(term);
     props.onSearchTermChange(term);
   }

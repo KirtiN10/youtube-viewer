@@ -32,7 +32,7 @@ function App() {
   return (
     <div>
       <SearchBar onSearchTermChange={videoSearchV} />
-      <VideoDetail video={selectedVideoState ? selectedVideoState : selectedVideo } />
+      <VideoDetail dispatch={dispatch} video={selectedVideoState ? selectedVideoState : selectedVideo } />
       <VideoList
         onVideoSelect={(selectedVideo) => setSelectedVideoState(selectedVideo)}
         videos={videos}

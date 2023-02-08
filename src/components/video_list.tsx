@@ -1,8 +1,13 @@
 import React from "react";
+import { VideoProps } from "../store/videos/types";
 import VideoListItem from "./video_list_item";
-
-const VideoList = (props: any) => {
-  const videoItems = props.videos.map((video: any) => {
+interface Props{
+  onVideoSelect:()=>{},
+  videos:[]
+} 
+const VideoList = (props:Props) => {
+  const videoItems = props.videos.map((video: VideoProps) => {
+    
     return (
       <VideoListItem
         onVideoSelect={props.onVideoSelect}

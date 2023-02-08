@@ -1,30 +1,34 @@
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 import { all, call, put, takeLatest } from "redux-saga/effects";
 import { fetchVideoFailure, fetchVideoSuccess } from "./actions";
 import { FETCH_VIDEO_REQUEST } from "./actionTypes";
+import { FetchVideoRequest } from "./types";
 
-var ROOT_URL = 'https://www.googleapis.com/youtube/v3/search';
+var ROOT_URL = "https://www.googleapis.com/youtube/v3/search";
 
 
 // const API_KEY = "AIzaSyDHs5nkssYDGIm41I40nj2ZyinKTJaLDgo";
 const API_KEY = "AIzaSyCbcQMTPqAevOao2BQsQadm5SFTZljP2dM"; //client
 
-const getVideos = (term: any) => {
-    var params = {
-    part: 'snippet',
+const getVideos = (term: string) => {
+  var params = {
+    part: "snippet",
     key: API_KEY,
     q: term,
-    type: 'video'
+    type: "video",
   };
   return axios.get(ROOT_URL, { params: params });
-}
+};
 
 /*
   Worker Saga: Fired on FETCH_VIDEO_REQUEST action
 */
-function* fetchVideoSaga(res: any) : any {
+
+function* fetchVideoSaga(res: FetchVideoRequest): Generator {
   try {
-    const response = yield call(getVideos, res.payload);
+    const response: {
+      data: {};
+    } = (yield call(getVideos, res.payload)) as { data: {} };
     yield put(
       fetchVideoSuccess({
         videos: response.data,
@@ -37,7 +41,7 @@ function* fetchVideoSaga(res: any) : any {
       })
     );
   }
-};
+}
 
 /*
   Starts worker saga on latest dispatched `FETCH_VIDEO_REQUEST` action.
