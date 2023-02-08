@@ -2,11 +2,19 @@ import { createSelector } from "reselect";
 
 import { AppState } from "../rootReducer";
 
-const getPending = (state: AppState) => state.videos.pending;
+const getPending = (state: {
+  videos: {
+    pending: boolean;
+  };
+}) => state.videos.pending;
 
-const getVideos = (state: AppState) => state.videos;
+const getVideos = (state: { videos: [] }) => state.videos;
 
-const getError = (state: AppState) => state.videos.error;
+const getError = (state: {
+  videos: {
+    error: string | boolean;
+  };
+}) => state.videos.error;
 
 export const getVideosSelector = createSelector(getVideos, (videos) => videos);
 

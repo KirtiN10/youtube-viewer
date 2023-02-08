@@ -6,6 +6,8 @@ import VideoList from "./components/video_list.tsx";
 import VideoDetail from "./components/video_detail.tsx";
 import { fetchVideoRequest } from "./store/videos/actions";
 import * as selectors from "./store/videos/selectors";
+import {fetchCommentsRequest} from './store/comments/actions';
+import * as commentsSelectors from "./store/comments/selectors";
 
 function App() {
   const dispatch = useDispatch();
@@ -29,10 +31,27 @@ function App() {
     dispatch(fetchVideoRequest(term));
   }, 300);
 
+  useEffect(() => {
+    const videoID = selectedVideoState ? selectedVideoState.id.videoId : selectedVideo?.id.videoId;
+    console.log('videoID', videoID);
+    dispatch(fetchCommentsRequest(videoID));
+  }, [dispatch, selectedVideoState,  selectedVideo]);
+
+  const {
+    comments
+  } = useSelector(
+    state => ({
+      comments: commentsSelectors.getCommentsSelector(state),
+    }),
+  );
+  console.log('commentscommentscommentscomments', comments);
+
+
+
   return (
     <div>
       <SearchBar onSearchTermChange={videoSearchV} />
-      <VideoDetail dispatch={dispatch} video={selectedVideoState ? selectedVideoState : selectedVideo } />
+      <VideoDetail comments={comments} dispatch={dispatch} video={selectedVideoState ? selectedVideoState : selectedVideo } />
       <VideoList
         onVideoSelect={(selectedVideo) => setSelectedVideoState(selectedVideo)}
         videos={videos}
