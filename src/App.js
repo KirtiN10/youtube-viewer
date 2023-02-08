@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import _ from "lodash";
-import SearchBar from "./components/search_bar";
-import VideoList from "./components/video_list";
-import VideoDetail from "./components/video_detail";
+import SearchBar from "./components/search_bar.tsx";
+import VideoList from "./components/video_list.tsx";
+import VideoDetail from "./components/video_detail.tsx";
 import { fetchVideoRequest } from "./store/videos/actions";
 import * as selectors from "./store/videos/selectors";
 
