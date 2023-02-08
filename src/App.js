@@ -12,14 +12,14 @@ import * as commentsSelectors from "./store/comments/selectors";
 function App() {
   const dispatch = useDispatch();
   const {
-    selectedVideo, videos
+    selectedVideo, videos, error
   } = useSelector(
     state => ({
       selectedVideo: selectors.getVideosSelector(state).videos[0],
       videos: selectors.getVideosSelector(state).videos,
+      error: selectors.getErrorSelector(state)
     }),
   );
-
   const [selectedVideoState, setSelectedVideoState] = useState(selectedVideo);
 
   useEffect(() => {
@@ -44,8 +44,10 @@ function App() {
       comments: commentsSelectors.getCommentsSelector(state),
     }),
   );
-  console.log('commentscommentscommentscomments', comments);
 
+  if(error) {
+    return <div>{error}</div>;
+  }
 
 
   return (

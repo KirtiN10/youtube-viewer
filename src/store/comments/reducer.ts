@@ -5,8 +5,6 @@ import {
     FETCH_COMMENTS_FAILURE,
   } from "./actionTypes";
   
-  import { CommentsActions, CommentsState } from "./types";
-  
   const initialState: any = {
     pending: false,
     comments: [],
@@ -21,7 +19,6 @@ import {
           pending: true,
         };
       case FETCH_COMMENTS_SUCCESS:
-        console.log('commentsReducer', action.payload.comments.items )
         return {
           ...state,
           pending: false,

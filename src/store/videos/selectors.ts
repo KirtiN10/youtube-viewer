@@ -1,7 +1,5 @@
 import { createSelector } from "reselect";
 
-import { AppState } from "../rootReducer";
-
 const getPending = (state: {
   videos: {
     pending: boolean;

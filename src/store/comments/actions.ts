@@ -12,7 +12,6 @@ import {
   } from "./types";
   
   export const fetchCommentsRequest = (videoId : any): FetchCommentsRequest => {
-    console.log(videoId);
     return ({
       type: FETCH_COMMENTS_REQUEST,
       payload: videoId,

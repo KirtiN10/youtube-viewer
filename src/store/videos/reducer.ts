@@ -5,7 +5,6 @@ import {
   FETCH_VIDEO_FAILURE,
 } from "./actionTypes";
 
-import { VideoActions, VideoState } from "./types";
 interface InitialState {
   pending: boolean;
   videos: [];

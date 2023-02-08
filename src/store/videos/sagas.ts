@@ -1,4 +1,4 @@
-import axios, { AxiosResponse } from "axios";
+import axios from "axios";
 import { all, call, put, takeLatest } from "redux-saga/effects";
 import { fetchVideoFailure, fetchVideoSuccess } from "./actions";
 import { FETCH_VIDEO_REQUEST } from "./actionTypes";
@@ -7,7 +7,7 @@ import { FetchVideoRequest } from "./types";
 var ROOT_URL = "https://www.googleapis.com/youtube/v3/search";
 
 
-const API_KEY = "AIzaSyA9O7H_oo4F_Ju5o8I02RCG8WF1yxpu2eE";
+const API_KEY = "AIzaSyCeapDN-4WgZ-Qq-iFHLdLwm4HP9TlyqY4";
 // const API_KEY = "AIzaSyCbcQMTPqAevOao2BQsQadm5SFTZljP2dM"; //client
 
 const getVideos = (term: string) => {
@@ -37,7 +37,7 @@ function* fetchVideoSaga(res: FetchVideoRequest): Generator {
   } catch (e: any) {
     yield put(
       fetchVideoFailure({
-        error: e.message,
+        error: e.response?.data.error.message,
       })
     );
   }

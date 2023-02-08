@@ -31,11 +31,10 @@ const VideoDetail = ({ video, comments }: Props) => {
       </div>
       {
         comments.comments.map((comment: any) => {
-          const commentSingle = comment.snippet.topLevelComment.snippet;
-          
+          const commentSingle = comment?.snippet?.topLevelComment?.snippet;
           return (
             <div className="details">
-              <p><b>{commentSingle.authorDisplayName}:</b> {commentSingle.textOriginal}</p>
+              <p><b>{commentSingle?.authorDisplayName}:</b> {commentSingle?.textOriginal}</p>
             </div>
           );
         })
