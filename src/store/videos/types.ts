@@ -27,7 +27,7 @@ import {
   
   export interface FetchVideoRequest {
     type: typeof FETCH_VIDEO_REQUEST;
-    term: any;
+    payload: any;
   }
   
   export type FetchVideoSuccess = {

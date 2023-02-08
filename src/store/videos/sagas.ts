@@ -1,5 +1,5 @@
 import axios from "axios";
-import { all, call, put, takeEvery } from "redux-saga/effects";
+import { call, put, takeLatest } from "redux-saga/effects";
 import { fetchVideoFailure, fetchVideoSuccess } from "./actions";
 import { FETCH_VIDEO_REQUEST } from "./actionTypes";
 // import { IVideo } from "./types";
@@ -47,8 +47,8 @@ function* fetchVideoSaga(term: any) : any {
   Allows concurrent increments.
 */
 function* videoSaga() {
-  console.log('heheheheheheh')
-  yield all([takeEvery(FETCH_VIDEO_REQUEST, fetchVideoSaga)]);
+  console.log('FETCH_VIDEO_REQUESTFETCH_VIDEO_REQUEST')
+  yield takeLatest(FETCH_VIDEO_REQUEST, fetchVideoSaga);
 }
 
 export default videoSaga;

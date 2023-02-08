@@ -12,10 +12,10 @@ import {
   } from "./types";
   
   export const fetchVideoRequest = (term : any): FetchVideoRequest => {
-    console.log("fetchVideoRequestfetchVideoRequestfetchVideoRequestfetchVideoRequestfetchVideoRequest");
+    console.log("fetchVideoRequestfetchVideoRequestfetchVideoRequestfetchVideoRequestfetchVideoRequest", term);
     return ({
       type: FETCH_VIDEO_REQUEST,
-      term: term,
+      payload: term,
     });
   }
   

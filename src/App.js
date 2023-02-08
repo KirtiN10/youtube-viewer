@@ -1,12 +1,12 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import _ from "lodash";
 import YTSearch from "youtube-api-search";
 import SearchBar from "./components/search_bar";
 import VideoList from "./components/video_list";
 import VideoDetail from "./components/video_detail";
-import { fetchVideoRequest } from "./store/video/actions";
-import * as selectors from "./store/video/selectors";
+import { fetchVideoRequest } from "./store/videos/actions";
+import * as selectors from "./store/videos/selectors";
 
 // const API_KEY = "AIzaSyDHs5nkssYDGIm41I40nj2ZyinKTJaLDgo";
 // const API_KEY = "AIzaSyCbcQMTPqAevOao2BQsQadm5SFTZljP2dM"; //client
@@ -21,6 +21,8 @@ function App() {
       videos: selectors.getVideosSelector(state).videos,
     }),
   );
+
+  const [selectedVideoState, setSelectedVideoState] = useState(selectedVideo);
 
   console.log('useSelector1', videos);
 
@@ -40,9 +42,9 @@ function App() {
   return (
     <div>
       <SearchBar onSearchTermChange={videoSearchV} />
-      <VideoDetail video={selectedVideo} />
+      <VideoDetail video={selectedVideoState ? selectedVideoState : selectedVideo } />
       <VideoList
-        onVideoSelect={(selectedVideo) => fetchVideoRequest(selectedVideo)}
+        onVideoSelect={(selectedVideo) => setSelectedVideoState(selectedVideo)}
         videos={videos}
       />
     </div>
