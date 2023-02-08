@@ -21,7 +21,6 @@ import {
           pending: true,
         };
       case FETCH_VIDEO_SUCCESS:
-        console.log('action.payload.videosaction.payload.videos', action.payload.videos.items)
         return {
           ...state,
           pending: false,

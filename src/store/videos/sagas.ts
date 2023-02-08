@@ -1,33 +1,30 @@
 import axios from "axios";
-import { call, put, takeLatest } from "redux-saga/effects";
+import { all, call, put, takeLatest } from "redux-saga/effects";
 import { fetchVideoFailure, fetchVideoSuccess } from "./actions";
 import { FETCH_VIDEO_REQUEST } from "./actionTypes";
-// import { IVideo } from "./types";
 
 var ROOT_URL = 'https://www.googleapis.com/youtube/v3/search';
-// var commentThreads = 'https://www.googleapis.com/youtube/v3/commentThreads';
 
-const API_KEY = "AIzaSyDHs5nkssYDGIm41I40nj2ZyinKTJaLDgo"; //client
 
-const getVideos = () => {
+// const API_KEY = "AIzaSyDHs5nkssYDGIm41I40nj2ZyinKTJaLDgo";
+const API_KEY = "AIzaSyCbcQMTPqAevOao2BQsQadm5SFTZljP2dM"; //client
+
+const getVideos = (term: any) => {
     var params = {
     part: 'snippet',
     key: API_KEY,
-    q: 'livepool',
+    q: term,
     type: 'video'
   };
   return axios.get(ROOT_URL, { params: params });
 }
-  
 
 /*
   Worker Saga: Fired on FETCH_VIDEO_REQUEST action
 */
-function* fetchVideoSaga(term: any) : any {
-  console.log('fetchVideoSagafetchVideoSagafetchVideoSagafetchVideoSagatremtremtrem', term);
+function* fetchVideoSaga(res: any) : any {
   try {
-    const response = yield call(getVideos);
-    console.log('response', response);
+    const response = yield call(getVideos, res.payload);
     yield put(
       fetchVideoSuccess({
         videos: response.data,
@@ -47,8 +44,7 @@ function* fetchVideoSaga(term: any) : any {
   Allows concurrent increments.
 */
 function* videoSaga() {
-  console.log('FETCH_VIDEO_REQUESTFETCH_VIDEO_REQUEST')
-  yield takeLatest(FETCH_VIDEO_REQUEST, fetchVideoSaga);
+  yield all([takeLatest(FETCH_VIDEO_REQUEST, fetchVideoSaga)]);
 }
 
 export default videoSaga;

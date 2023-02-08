@@ -29,7 +29,7 @@ import {
     type: typeof FETCH_VIDEO_REQUEST;
     payload: any;
   }
-  
+
   export type FetchVideoSuccess = {
     type: typeof FETCH_VIDEO_SUCCESS;
     payload: FetchVideoSuccessPayload;
