@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import TextField from '@mui/material/TextField';
 
-interface Props{
-  onSearchTermChange:(param:string)=>{}
+interface Props {
+  onSearchTermChange:(param:string)=>void
 }
 
 function SearchBar(props:Props) {
@@ -17,8 +17,10 @@ function SearchBar(props:Props) {
   }
 
   return (
-    <div className="search-bar">
+    <div data-testid="search-form" className="search-bar">
       <TextField
+        data-testid="term"
+        name="term"
         label="Search Video" variant="standard"
         fullWidth
         value={term}
