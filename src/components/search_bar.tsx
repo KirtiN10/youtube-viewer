@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import TextField from '@mui/material/TextField';
+
 interface Props{
   onSearchTermChange:(param:string)=>{}
 }
@@ -16,7 +18,9 @@ function SearchBar(props:Props) {
 
   return (
     <div className="search-bar">
-      <input
+      <TextField
+        label="Search Video" variant="standard"
+        fullWidth
         value={term}
         onChange={(event) => onInputChange(event.target.value)}
       />

@@ -4,6 +4,9 @@
   "description": "Simple app starter using youtube api",
   "private": true,
   "dependencies": {
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
+    "@mui/material": "^5.11.8",
     "@reduxjs/toolkit": "^1.9.2",
     "@types/axios": "^0.14.0",
     "@types/react-redux": "^7.1.25",
@@ -18,6 +21,7 @@
     "redux": "^4.2.1",
     "redux-saga": "^1.2.2",
     "typescript": "^4.1.6",
+    "yarn": "^1.22.19",
     "youtube-api-search": "0.0.5"
   },
   "scripts": {

@@ -8,6 +8,7 @@ import { fetchVideoRequest } from "./store/videos/actions";
 import * as selectors from "./store/videos/selectors";
 import {fetchCommentsRequest} from './store/comments/actions';
 import * as commentsSelectors from "./store/comments/selectors";
+import Container from '@mui/material/Container';
 
 function App() {
   const dispatch = useDispatch();
@@ -52,14 +53,14 @@ function App() {
 
 
   return (
-    <div>
+    <Container>
       <SearchBar onSearchTermChange={videoSearchV} />
       <VideoDetail comments={comments} dispatch={dispatch} video={selectedVideoState ? selectedVideoState : selectedVideo } />
       <VideoList
         onVideoSelect={(selectedVideo) => setSelectedVideoState(selectedVideo)}
         videos={videos}
       />
-    </div>
+    </Container>
   );
 }
 

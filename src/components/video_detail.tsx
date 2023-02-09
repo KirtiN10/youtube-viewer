@@ -7,8 +7,6 @@ video:VideoProps
 comments: any
 }
 
- 
-
 const VideoDetail = ({ video, comments }: Props) => {
 
   if (!video) {
@@ -32,13 +30,14 @@ const VideoDetail = ({ video, comments }: Props) => {
         <div>{video.snippet.title}</div>
         <div>{video.snippet.description}</div>
       </div>
+      <h6 className="comments">COMMENTS: </h6>
       {
         comments.comments.map((comment: any) => {
           const commentSingle = comment?.snippet?.topLevelComment?.snippet;
           const replies = comment.totalReplyCount ? comment.replies : [] ;
-          console.log(comment.replies, 'comment');
+          console.log(comment, 'comment');
           return (
-            <div className="details">
+            <div className="details" key={commentSingle.id}>
               <p><b>{commentSingle?.authorDisplayName}:</b> {commentSingle?.textOriginal}</p>
               {replies.map((reply: any) => {
               return (
