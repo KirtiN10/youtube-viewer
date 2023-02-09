@@ -11,6 +11,8 @@ import * as commentsSelectors from "./store/comments/selectors";
 
 function App() {
   const dispatch = useDispatch();
+
+  // fetched all the redux saved videos
   const {
     selectedVideo, videos, error
   } = useSelector(
@@ -33,7 +35,6 @@ function App() {
 
   useEffect(() => {
     const videoID = selectedVideoState ? selectedVideoState.id.videoId : selectedVideo?.id.videoId;
-    console.log('videoID', videoID);
     dispatch(fetchCommentsRequest(videoID));
   }, [dispatch, selectedVideoState,  selectedVideo]);
 

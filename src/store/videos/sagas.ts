@@ -3,12 +3,11 @@ import { all, call, put, takeLatest } from "redux-saga/effects";
 import { fetchVideoFailure, fetchVideoSuccess } from "./actions";
 import { FETCH_VIDEO_REQUEST } from "./actionTypes";
 import { FetchVideoRequest } from "./types";
+import appConstants from "../../config/appConstants";
 
-var ROOT_URL = "https://www.googleapis.com/youtube/v3/search";
+var ROOT_URL = `${appConstants.request_url}/search`;
 
-
-const API_KEY = "AIzaSyD8ZAgc13AJzzF4WP_tYirWJ_X7BVHnto0";
-// const API_KEY = "AIzaSyCbcQMTPqAevOao2BQsQadm5SFTZljP2dM"; //client
+const API_KEY = process.env.REACT_APP_API_KEY;
 
 const getVideos = (term: string) => {
   var params = {

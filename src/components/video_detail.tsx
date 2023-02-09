@@ -6,6 +6,9 @@ interface Props{
 video:VideoProps
 comments: any
 }
+
+ 
+
 const VideoDetail = ({ video, comments }: Props) => {
 
   if (!video) {

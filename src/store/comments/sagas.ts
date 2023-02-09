@@ -2,12 +2,11 @@ import axios from "axios";
 import { all, call, put, takeLatest } from "redux-saga/effects";
 import { fetchCommentsFailure, fetchCommentsSuccess } from "./actions";
 import { FETCH_COMMENTS_REQUEST } from "./actionTypes";
+import appConstants from "../../config/appConstants";
 
-var ROOT_URL = 'https://www.googleapis.com/youtube/v3/commentThreads';
+var ROOT_URL = `${appConstants.request_url}/commentThreads`;
 
-
-const API_KEY = "AIzaSyCeapDN-4WgZ-Qq-iFHLdLwm4HP9TlyqY4";
-// const API_KEY = "AIzaSyCbcQMTPqAevOao2BQsQadm5SFTZljP2dM"; //client
+const API_KEY = process.env.REACT_APP_API_KEY;
 
 const getComments = (videoId: any) => {
   var params = {
