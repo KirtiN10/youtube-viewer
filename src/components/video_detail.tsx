@@ -32,9 +32,16 @@ const VideoDetail = ({ video, comments }: Props) => {
       {
         comments.comments.map((comment: any) => {
           const commentSingle = comment?.snippet?.topLevelComment?.snippet;
+          const replies = comment.totalReplyCount ? comment.replies : [] ;
+          console.log(comment.replies, 'comment');
           return (
             <div className="details">
               <p><b>{commentSingle?.authorDisplayName}:</b> {commentSingle?.textOriginal}</p>
+              {replies.map((reply: any) => {
+              return (
+                <p key={reply}>{reply.authorDisplayName}{reply}</p>
+              );
+            })}
             </div>
           );
         })

@@ -7,7 +7,7 @@ import { FetchVideoRequest } from "./types";
 var ROOT_URL = "https://www.googleapis.com/youtube/v3/search";
 
 
-const API_KEY = "AIzaSyCeapDN-4WgZ-Qq-iFHLdLwm4HP9TlyqY4";
+const API_KEY = "AIzaSyD8ZAgc13AJzzF4WP_tYirWJ_X7BVHnto0";
 // const API_KEY = "AIzaSyCbcQMTPqAevOao2BQsQadm5SFTZljP2dM"; //client
 
 const getVideos = (term: string) => {

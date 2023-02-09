@@ -17,7 +17,7 @@ const initialState: InitialState = {
   error: null,
 };
 
-export default (state = initialState, action: AnyAction) => {
+const state = (state = initialState, action: AnyAction) => {
   switch (action.type) {
     case FETCH_VIDEO_REQUEST:
       return {
@@ -44,3 +44,5 @@ export default (state = initialState, action: AnyAction) => {
       };
   }
 };
+
+export default state;

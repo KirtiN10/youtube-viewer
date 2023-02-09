@@ -1,12 +1,10 @@
 import { createSelector } from "reselect";
 
-import { AppState } from "../rootReducer";
+const getPending = (state: any) => state.comments.pending;
 
-const getPending = (state: AppState) => state.comments.pending;
+const getComments = (state: any) => state.comments;
 
-const getComments = (state: AppState) => state.comments;
-
-const getError = (state: AppState) => state.comments.error;
+const getError = (state: any) => state.comments.error;
 
 export const getCommentsSelector = createSelector(getComments, (comments) => comments);
 

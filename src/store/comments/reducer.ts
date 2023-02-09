@@ -11,7 +11,7 @@ import {
     error: null,
   };
   
-  export default (state = initialState, action: any) => {
+ const state = (state = initialState, action: any) => {
     switch (action.type) {
       case FETCH_COMMENTS_REQUEST:
         return {
@@ -38,3 +38,5 @@ import {
         };
     }
   };
+
+export default state;
